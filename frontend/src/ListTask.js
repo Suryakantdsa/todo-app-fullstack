@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function ListTask(props) {
     const navigate = useNavigate()
     const handleDelete = async (id) => {
-        await fetch(`http://localhost:5001/${id}`, {
+        await fetch(`https://todo-app-fullstack-syab.onrender.com/${id}`, {
             method: "DELETE"
         })
         // result = await result.json()
@@ -16,7 +16,7 @@ function ListTask(props) {
     }
     const handleEdit = async (id) => {
         props.updateTask(id)
-        let result = await fetch(`http://localhost:5001/${id}`)
+        let result = await fetch(`https://todo-app-fullstack-syab.onrender.com/${id}`)
         result = await result.json()
         console.log(result)
         props.getTaskToEdit(result.title)

@@ -15,13 +15,13 @@ function TodoApp() {
         console.log("called useeffect")
     }, [])
     const callTasks = async () => {
-        let result = await fetch("http://localhost:5001/")
+        let result = await fetch("https://todo-app-fullstack-syab.onrender.com/")
         result = await result.json()
         getALLtask(result)
     }
     const addTask = async () => {
         if (newtaskIn) {
-            let result = await fetch("http://localhost:5001/", {
+            let result = await fetch("https://todo-app-fullstack-syab.onrender.com/", {
                 method: "POST",
                 body: JSON.stringify({ title: newtaskIn }),
                 headers: {
@@ -37,7 +37,7 @@ function TodoApp() {
         }
     }
     const handleUpdate = async () => {
-        let result = await fetch(`http://localhost:5001/${taskId}`,
+        let result = await fetch(`https://todo-app-fullstack-syab.onrender.com/${taskId}`,
             {
                 method: "PUT",
                 body: JSON.stringify({ title: newtaskIn }),
