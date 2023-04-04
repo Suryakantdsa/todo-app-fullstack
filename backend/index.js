@@ -14,12 +14,10 @@ app.get("/show",(req,resp)=>{
 })
 app.post("/",async(req,resp)=>{
     try{
-        console.log(req.body)
         let title=new todoTiitle(req.body)
         let result=await title.save()
         result=result.toObject()
         resp.send(result)
-        console.log(result)
     }
     catch{
         resp.status(400).json({msg:"failed"})
@@ -29,10 +27,8 @@ app.post("/",async(req,resp)=>{
 app.get("/",async(req,resp)=>{
     try{
         let allTask=await todoTiitle.find();
-        console.log(allTask)
         if(allTask.length>0){
             resp.send(allTask)
-            console.log(allTask)
         }
         else{
             resp.status(404).send({result:"no task to do"})
